@@ -1,0 +1,126 @@
+#git init is to make a folder/file ready to be recognized by git
+#git status is to check if a file is ready to be added to git
+#git add . is to add a file to git
+#git commit -m "preferred message"
+#git reset is to reverse the git add action
+# in the git window, type cd and folder name to set a folder in git
+# ls shows a list of all files in a folder
+
+import random
+database = {}
+
+def init():  #the initialisation/introductory function
+    validEntry = False
+    print("Welcome to bank PHB")
+    while validEntry == False: # if an invalid option is entered
+        prompt = int(input("Do you have an account with us?\n: 1 (Yes), 2(No)\n"))
+        if prompt == 1:
+            validEntry = True
+            login()
+        elif prompt == 2:
+            validEntry = True
+            register()
+        else:
+            print("****You have made a wrong selection****\n\n")
+
+def register():
+    print("Enter registration details")
+    first_name = input("Enter First name\n")
+    last_name = input("Enter Last name\n")
+    email = input("Enter Email address\n")
+    password = input("Enter password\n")
+    account_number = account_generator()
+    database[account_number] = [first_name,last_name,email,password]
+    print(database)
+    print("Account created")
+    
+def login():
+    print("Please enter login details")
+    useraccount = 68365     #   This is the unique account number
+    userpassword = "kurus"  #   This is the unique password
+    loginPrompt = False     
+    while loginPrompt == False:  #   if the login process fails
+        account = int(input("Enter Account number\n"))
+
+        if account == useraccount:
+            loginPrompt = True
+            password = input("Enter password\n")
+            if password == userpassword:
+                loginPrompt = True
+                print("Welcome to your profile")
+            else:
+                print("Invalid password")
+
+        else:
+            print("Invalid account number or password")
+    datetime()
+    bank_operations()
+
+
+def bank_operations():
+    prompter = int(input("Select an option:\n (1): Check Account balance\n (2): Withdraw\n (3): Deposit\n (4): Exit\n"))
+    if prompter == 1:
+        print("Your account balance is...")
+    elif prompter == 2:
+        print("Select amount to withdraw:")
+    elif prompter == 3:
+        print("Select amount to deposit:")
+    elif prompter == 4:
+        exit()
+    else:
+        print("You selected an invalid option")
+
+
+def account_generator():
+    return random.randrange(11111,99999)
+
+
+
+def datetime():
+    from datetime import datetime
+    print(datetime.now().strftime("%d/%m/%Y : %H:%M:%S"))
+
+print(account_generator())
+init()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
